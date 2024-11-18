@@ -1,0 +1,91 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "foo",
+          "version": "4.0.0"
+        },
+        "path": [
+          "Thing"
+        ]
+      },
+      "ident": "Thing",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": false,
+          "ident": "name",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        },
+        {
+          "required": false,
+          "ident": "other",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "prefix": "bar",
+              "package": {
+                "package": "bar",
+                "version": "1.0.0"
+              },
+              "path": [
+                "Other"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "other2",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "prefix": "bar2",
+              "package": {
+                "package": "bar",
+                "version": "2.0.0"
+              },
+              "path": [
+                "Other"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "other21",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "prefix": "bar21",
+              "package": {
+                "package": "bar",
+                "version": "2.1.0"
+              },
+              "path": [
+                "Other"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    }
+  ],
+  "decl_idents": {
+    "Thing": 0
+  }
+}

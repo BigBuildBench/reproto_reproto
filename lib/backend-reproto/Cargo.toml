@@ -1,0 +1,22 @@
+[package]
+name = "reproto-backend-reproto"
+version = "0.4.0"
+authors = ["John-John Tedro <udoprog@tedro.se>"]
+license = "MIT/Apache-2.0"
+edition = "2021"
+readme = "README.md"
+repository = "https://github.com/reproto/reproto"
+homepage = "https://github.com/reproto/reproto"
+documentation = "https://docs.rs/reproto-derive"
+description = """
+Rethinking Protocol Generators
+
+reproto backend for reproto
+
+this crate writes a schema out as a schema again.
+"""
+
+[dependencies]
+
+[lib]
+path = "lib.rs"

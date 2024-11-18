@@ -1,0 +1,41 @@
+// vim: ft=rust
+use ast::*;
+use path_lexer::{self, PathToken};
+use std::borrow::Cow;
+
+grammar<'input>();
+
+pub Path: PathSpec<'input> = {
+    "/" =>
+    PathSpec {
+        steps: vec![],
+    },
+    <steps:Step*> =>
+    PathSpec {
+        steps: steps,
+    },
+};
+
+Step: PathStep<'input> =
+    "/" <parts:Part+> =>
+    PathStep {
+        parts: parts,
+    };
+
+Part: PathPart<'input> = {
+    "{" <variable:ident> "}" => PathPart::Variable(variable),
+    <segment:segment> => PathPart::Segment(segment),
+};
+
+extern {
+    type Location = usize;
+    type Error = path_lexer::Error;
+
+    enum PathToken<'input> {
+        "/" => PathToken::Slash,
+        "{" => PathToken::LeftCurly,
+        "}" => PathToken::RightCurly,
+        ident => PathToken::Identifier(<Cow<'input, str>>),
+        segment => PathToken::Segment(<String>),
+    }
+}

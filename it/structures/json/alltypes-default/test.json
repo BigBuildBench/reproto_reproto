@@ -1,0 +1,183 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Entry"
+        ]
+      },
+      "ident": "Entry",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": false,
+          "ident": "boolean_type",
+          "comment": [],
+          "type": {
+            "type": "boolean"
+          }
+        },
+        {
+          "required": false,
+          "ident": "string_type",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        },
+        {
+          "required": false,
+          "ident": "datetime_type",
+          "comment": [],
+          "type": {
+            "type": "date_time"
+          }
+        },
+        {
+          "required": false,
+          "ident": "unsigned_32",
+          "comment": [],
+          "type": {
+            "type": "number",
+            "kind": "u32"
+          }
+        },
+        {
+          "required": false,
+          "ident": "unsigned_64",
+          "comment": [],
+          "type": {
+            "type": "number",
+            "kind": "u64"
+          }
+        },
+        {
+          "required": false,
+          "ident": "signed_32",
+          "comment": [],
+          "type": {
+            "type": "number",
+            "kind": "i32"
+          }
+        },
+        {
+          "required": false,
+          "ident": "signed_64",
+          "comment": [],
+          "type": {
+            "type": "number",
+            "kind": "i64"
+          }
+        },
+        {
+          "required": false,
+          "ident": "float_type",
+          "comment": [],
+          "type": {
+            "type": "float"
+          }
+        },
+        {
+          "required": false,
+          "ident": "double_type",
+          "comment": [],
+          "type": {
+            "type": "double"
+          }
+        },
+        {
+          "required": false,
+          "ident": "bytes_type",
+          "comment": [],
+          "type": {
+            "type": "bytes"
+          }
+        },
+        {
+          "required": false,
+          "ident": "any_type",
+          "comment": [],
+          "type": {
+            "type": "any"
+          }
+        },
+        {
+          "required": false,
+          "ident": "array_type",
+          "comment": [],
+          "type": {
+            "type": "array",
+            "inner": {
+              "type": "name",
+              "name": {
+                "package": {
+                  "package": "test"
+                },
+                "path": [
+                  "Entry"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "array_of_array_type",
+          "comment": [],
+          "type": {
+            "type": "array",
+            "inner": {
+              "type": "array",
+              "inner": {
+                "type": "name",
+                "name": {
+                  "package": {
+                    "package": "test"
+                  },
+                  "path": [
+                    "Entry"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "map_type",
+          "comment": [],
+          "type": {
+            "type": "map",
+            "key": {
+              "type": "string"
+            },
+            "value": {
+              "type": "name",
+              "name": {
+                "package": {
+                  "package": "test"
+                },
+                "path": [
+                  "Entry"
+                ]
+              }
+            }
+          }
+        }
+      ],
+      "codes": []
+    }
+  ],
+  "decl_idents": {
+    "Entry": 0
+  }
+}

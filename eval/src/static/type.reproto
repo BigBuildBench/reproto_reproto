@@ -1,0 +1,28 @@
+//! # An example `type` in reproto
+//!
+//! This is the simplest structure,
+//! fields directly associated with an Object.
+//!
+//! Hint: there are more packages to explore,
+//!       see the dropdown menu up top!
+
+/// A blog post.
+type Post {
+  /// Title of this post.
+  title: string;
+
+  /// Author of the post.
+  author: string;
+
+  /// Time at when the post was posted.
+  posted_at: datetime;
+
+  /// Tags associated with this post.
+  tags: [::Tag];
+
+  /// The tags for our post!
+  enum Tag as string {
+    Programming as "programming";
+    Politics as "politics";
+  }
+}

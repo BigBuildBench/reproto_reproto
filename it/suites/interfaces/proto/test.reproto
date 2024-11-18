@@ -1,0 +1,42 @@
+type Entry {
+  tagged?: Tagged;
+  untagged?: Untagged;
+}
+
+#[type_info(strategy = "tagged", tag = "@type")]
+interface Tagged {
+  shared: string;
+
+  A as "foo";
+
+  B as "b";
+
+  Bar {
+  }
+
+  Baz;
+}
+
+#[type_info(strategy = "untagged")]
+interface Untagged {
+  shared: string;
+  shared_ignore?: string;
+
+  /// Special case: fields shared with other sub-types.
+  /// NOTE: due to rust support through untagged, the types are matched in-order.
+  A {
+    a: string;
+    b: string;
+    ignore?: string;
+  }
+
+  B {
+    a: string;
+    ignore?: string;
+  }
+
+  C {
+    b: string;
+    ignore?: string;
+  }
+}

@@ -1,0 +1,45 @@
+#!/bin/bash
+# Handles publishing of components in the right order.
+# use SKIP environment variable to specify modules to skip
+
+target=$PWD/target
+root=$PWD
+
+candidates=()
+candidates+=(lib/semver)
+candidates+=(lib/naming)
+candidates+=(lib/core)
+candidates+=(lib/ast)
+candidates+=(lib/path-lexer lib/path-parser)
+candidates+=(lib/regex-lexer lib/regex-parser)
+candidates+=(lib/lexer lib/parser)
+candidates+=(lib/trans)
+candidates+=(lib/derive)
+candidates+=(lib/manifest lib/backend lib/semck)
+candidates+=(lib/repository lib/repository-http)
+candidates+=(lib/compile)
+
+for manifest in $root/lib/backend-*/Cargo.toml; do
+    b=$(basename $(dirname $manifest))
+    candidates+=(lib/$b)
+done
+
+candidates+=(lib/env)
+candidates+=(lib/languageserver)
+candidates+=(server cli)
+
+targets=()
+
+for candidate in ${candidates[*]}; do
+    if [[ $SKIP != *"$candidate"* ]]; then
+        targets+=($candidate)
+    fi
+done
+
+echo "TARGETS: ${targets[*]}"
+
+export CARGO_TARGET_DIR=$target
+
+for target in ${targets[*]}; do
+    cargo publish --manifest-path=$root/$target/Cargo.toml
+done

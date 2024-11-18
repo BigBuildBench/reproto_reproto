@@ -1,0 +1,101 @@
+.editors {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  .input {
+    height: 100%;
+  }
+
+  .output {
+    height: 100%;
+    overflow-y: scroll;
+
+    .ace_search {
+      position: fixed !important;
+    }
+
+    .output-file {
+      .title {
+        margin: 5px 10px;
+        font-weight: bold;
+        padding: 5px 0;
+
+        .title-icon {
+        }
+
+        .title-text {
+          margin-left: 10px;
+          font-size: 80%;
+          font-family: "Courier New", Courier, monospace;
+        }
+      }
+    }
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0
+}
+
+#app {
+  height: 100%;
+}
+
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.box .box-row {
+  position: relative;
+  border-bottom: 1px solid grey;
+}
+
+.box .box-row.header {
+  flex: 0 1 auto;
+}
+
+.box .box-row.content {
+  flex: 1 1 auto;
+}
+
+.box .box-row.footer {
+  flex: 0 1 40px;
+}
+
+.dialogs {
+  position: absolute;
+  z-index: 1000;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.lb-sm {
+  font-size: 12px;
+}
+
+.lb-md {
+  font-size: 16px;
+}
+
+.lb-lg {
+  font-size: 20px;
+}
+
+.info-marker {
+  position: absolute;
+  background-color: orange;
+  opacity: 0.2;
+}
+
+.error-marker {
+  position: absolute;
+  background-color: red;
+  opacity: 0.2;
+}

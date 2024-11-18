@@ -1,0 +1,13 @@
+type Entry {}
+
+type Type {}
+
+interface Interface {
+  SubType {}
+}
+
+enum Enum as string {
+  Variant as "Variant";
+}
+
+tuple Tuple {}

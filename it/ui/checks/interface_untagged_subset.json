@@ -1,0 +1,26 @@
+{
+  "status": false,
+  "stdout": [
+    "error when building",
+    "suppressed: error in environment",
+    "it/ui/proto/interface_untagged_subset.reproto:3:3-9:",
+    "  3:   Foo {",
+    "       ^^^^^^ - fields with names `a` are present in another sub-type, this would cause deserialization to be ambiguous for certain cases.",
+    "it/ui/proto/interface_untagged_subset.reproto:3:3-9:",
+    "  3:   Foo {",
+    "       ^^^^^^ - HINT: re-order or change your sub-types to avoid this",
+    "it/ui/proto/interface_untagged_subset.reproto:11:3-9:",
+    " 11:   Baz {",
+    "       ^^^^^^ - conflicting sub-type with fields `a, b` is defined here",
+    "it/ui/proto/interface_untagged_subset.reproto:7:3-9:",
+    "  7:   Bar {",
+    "       ^^^^^^ - fields with names `b` are present in another sub-type, this would cause deserialization to be ambiguous for certain cases.",
+    "it/ui/proto/interface_untagged_subset.reproto:7:3-9:",
+    "  7:   Bar {",
+    "       ^^^^^^ - HINT: re-order or change your sub-types to avoid this",
+    "it/ui/proto/interface_untagged_subset.reproto:11:3-9:",
+    " 11:   Baz {",
+    "       ^^^^^^ - conflicting sub-type with fields `a, b` is defined here"
+  ],
+  "stderr": []
+}

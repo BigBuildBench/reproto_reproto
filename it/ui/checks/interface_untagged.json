@@ -1,0 +1,20 @@
+{
+  "status": false,
+  "stdout": [
+    "error when building",
+    "suppressed: error in environment",
+    "it/ui/proto/interface_untagged.reproto:8:5-16:",
+    "  8:     a?: string;",
+    "         ^^^^^^^^^^^ - is a required field of another sub-type",
+    "it/ui/proto/interface_untagged.reproto:3:3-9:",
+    "  3:   Foo {",
+    "       ^^^^^^ - sub-type defined here",
+    "it/ui/proto/interface_untagged.reproto:8:5-16:",
+    "  8:     a?: string;",
+    "         ^^^^^^^^^^^ - is a required field of another sub-type",
+    "it/ui/proto/interface_untagged.reproto:11:3-9:",
+    " 11:   Baz {",
+    "       ^^^^^^ - sub-type defined here"
+  ],
+  "stderr": []
+}

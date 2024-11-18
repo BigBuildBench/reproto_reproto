@@ -1,0 +1,127 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Entry"
+        ]
+      },
+      "ident": "Entry",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": false,
+          "ident": "a",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "A"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "b",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "A",
+                "B"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    },
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "A"
+        ]
+      },
+      "ident": "A",
+      "comment": [],
+      "decls": [
+        {
+          "type": "type",
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "A",
+              "B"
+            ]
+          },
+          "ident": "B",
+          "comment": [],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [
+            {
+              "required": true,
+              "ident": "field",
+              "comment": [],
+              "type": {
+                "type": "string"
+              }
+            }
+          ],
+          "codes": []
+        }
+      ],
+      "decl_idents": {
+        "B": 0
+      },
+      "fields": [
+        {
+          "required": true,
+          "ident": "b",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "A",
+                "B"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    }
+  ],
+  "decl_idents": {
+    "Entry": 0,
+    "A": 1
+  }
+}

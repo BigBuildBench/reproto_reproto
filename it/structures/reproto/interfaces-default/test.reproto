@@ -1,0 +1,39 @@
+type Entry {
+  tagged?: Tagged;
+
+  untagged?: Untagged;
+}
+
+#[type_info(strategy = "tagged", tag = "@type")]
+interface Tagged {
+  A as "foo" {}
+
+  B as "b" {}
+
+  Bar {}
+
+  Baz {}
+}
+
+#[type_info(strategy = "untagged")]
+interface Untagged {
+  A {
+    a: string;
+
+    b: string;
+
+    ignore?: string;
+  }
+
+  B {
+    a: string;
+
+    ignore?: string;
+  }
+
+  C {
+    b: string;
+
+    ignore?: string;
+  }
+}

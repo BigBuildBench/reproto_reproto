@@ -1,0 +1,172 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Entry"
+        ]
+      },
+      "ident": "Entry",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": false,
+          "ident": "tuple1",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "Tuple1"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "tuple2",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "Tuple2"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    },
+    {
+      "type": "tuple",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Tuple1"
+        ]
+      },
+      "ident": "Tuple1",
+      "comment": [
+        "Tuple containing primitive."
+      ],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": true,
+          "ident": "a",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        },
+        {
+          "required": true,
+          "ident": "b",
+          "comment": [],
+          "type": {
+            "type": "number",
+            "kind": "u64"
+          }
+        }
+      ],
+      "codes": []
+    },
+    {
+      "type": "tuple",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Tuple2"
+        ]
+      },
+      "ident": "Tuple2",
+      "comment": [
+        "Tuple containing object."
+      ],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": true,
+          "ident": "a",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        },
+        {
+          "required": true,
+          "ident": "b",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "Other"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    },
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Other"
+        ]
+      },
+      "ident": "Other",
+      "comment": [
+        "Complex object."
+      ],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": true,
+          "ident": "a",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        }
+      ],
+      "codes": []
+    }
+  ],
+  "decl_idents": {
+    "Entry": 0,
+    "Tuple1": 1,
+    "Tuple2": 2,
+    "Other": 3
+  }
+}

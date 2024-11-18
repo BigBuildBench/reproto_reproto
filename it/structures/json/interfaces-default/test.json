@@ -1,0 +1,316 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Entry"
+        ]
+      },
+      "ident": "Entry",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": false,
+          "ident": "tagged",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "Tagged"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "untagged",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "Untagged"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    },
+    {
+      "type": "interface",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Tagged"
+        ]
+      },
+      "ident": "Tagged",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": true,
+          "ident": "shared",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        }
+      ],
+      "codes": [],
+      "sub_types": [
+        {
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "Tagged",
+              "A"
+            ]
+          },
+          "ident": "A",
+          "comment": [],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [],
+          "codes": [],
+          "sub_type_name": "foo"
+        },
+        {
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "Tagged",
+              "B"
+            ]
+          },
+          "ident": "B",
+          "comment": [],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [],
+          "codes": [],
+          "sub_type_name": "b"
+        },
+        {
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "Tagged",
+              "Bar"
+            ]
+          },
+          "ident": "Bar",
+          "comment": [],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [],
+          "codes": []
+        },
+        {
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "Tagged",
+              "Baz"
+            ]
+          },
+          "ident": "Baz",
+          "comment": [],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [],
+          "codes": []
+        }
+      ],
+      "sub_type_strategy": {
+        "type": "tagged",
+        "tag": "@type"
+      }
+    },
+    {
+      "type": "interface",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Untagged"
+        ]
+      },
+      "ident": "Untagged",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": true,
+          "ident": "shared",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        },
+        {
+          "required": false,
+          "ident": "shared_ignore",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        }
+      ],
+      "codes": [],
+      "sub_types": [
+        {
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "Untagged",
+              "A"
+            ]
+          },
+          "ident": "A",
+          "comment": [
+            "Special case: fields shared with other sub-types.",
+            "NOTE: due to rust support through untagged, the types are matched in-order."
+          ],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [
+            {
+              "required": true,
+              "ident": "a",
+              "comment": [],
+              "type": {
+                "type": "string"
+              }
+            },
+            {
+              "required": true,
+              "ident": "b",
+              "comment": [],
+              "type": {
+                "type": "string"
+              }
+            },
+            {
+              "required": false,
+              "ident": "ignore",
+              "comment": [],
+              "type": {
+                "type": "string"
+              }
+            }
+          ],
+          "codes": []
+        },
+        {
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "Untagged",
+              "B"
+            ]
+          },
+          "ident": "B",
+          "comment": [],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [
+            {
+              "required": true,
+              "ident": "a",
+              "comment": [],
+              "type": {
+                "type": "string"
+              }
+            },
+            {
+              "required": false,
+              "ident": "ignore",
+              "comment": [],
+              "type": {
+                "type": "string"
+              }
+            }
+          ],
+          "codes": []
+        },
+        {
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "Untagged",
+              "C"
+            ]
+          },
+          "ident": "C",
+          "comment": [],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [
+            {
+              "required": true,
+              "ident": "b",
+              "comment": [],
+              "type": {
+                "type": "string"
+              }
+            },
+            {
+              "required": false,
+              "ident": "ignore",
+              "comment": [],
+              "type": {
+                "type": "string"
+              }
+            }
+          ],
+          "codes": []
+        }
+      ],
+      "sub_type_strategy": {
+        "type": "untagged"
+      }
+    }
+  ],
+  "decl_idents": {
+    "Entry": 0,
+    "Tagged": 1,
+    "Untagged": 2
+  }
+}

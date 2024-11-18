@@ -1,0 +1,9 @@
+# #[type_info(strategy = "tagged", tag="@type")]
+{"tagged": {"@type": "foo", "shared": "string"}}
+{"tagged": {"@type": "b", "shared": "string"}}
+{"tagged": {"@type": "Bar", "shared": "string"}}
+{"tagged": {"@type": "Baz", "shared": "string"}}
+# #[type_info(strategy = "untagged")]
+{"untagged": {"a": "a", "shared": "string"}}
+{"untagged": {"b": "b", "shared": "string"}}
+{"untagged": {"a": "a", "b": "b", "shared": "string"}}

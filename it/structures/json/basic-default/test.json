@@ -1,0 +1,145 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Entry"
+        ]
+      },
+      "ident": "Entry",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": false,
+          "ident": "foo",
+          "comment": [
+            "The foo field."
+          ],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "Foo"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    },
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Foo"
+        ]
+      },
+      "ident": "Foo",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": true,
+          "ident": "field",
+          "comment": [
+            "The field."
+          ],
+          "type": {
+            "type": "string"
+          }
+        }
+      ],
+      "codes": []
+    },
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Bar"
+        ]
+      },
+      "ident": "Bar",
+      "comment": [],
+      "decls": [
+        {
+          "type": "type",
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "Bar",
+              "Inner"
+            ]
+          },
+          "ident": "Inner",
+          "comment": [],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [
+            {
+              "required": true,
+              "ident": "field",
+              "comment": [
+                "The field."
+              ],
+              "type": {
+                "type": "string"
+              }
+            }
+          ],
+          "codes": []
+        }
+      ],
+      "decl_idents": {
+        "Inner": 0
+      },
+      "fields": [
+        {
+          "required": true,
+          "ident": "field",
+          "comment": [
+            "The inner field."
+          ],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "Bar",
+                "Inner"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    }
+  ],
+  "decl_idents": {
+    "Entry": 0,
+    "Foo": 1,
+    "Bar": 2
+  }
+}

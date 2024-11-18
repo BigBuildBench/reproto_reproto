@@ -1,0 +1,67 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "lower_snake"
+        },
+        "path": [
+          "Value"
+        ]
+      },
+      "ident": "Value",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": true,
+          "ident": "foo_bar",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        }
+      ],
+      "codes": []
+    },
+    {
+      "type": "service",
+      "name": {
+        "package": {
+          "package": "lower_snake"
+        },
+        "path": [
+          "Service"
+        ]
+      },
+      "ident": "Service",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "http": {},
+      "endpoints": [
+        {
+          "ident": "foo_bar",
+          "comment": [],
+          "attributes": {
+            "words": {},
+            "selections": {}
+          },
+          "arguments": [],
+          "http": {
+            "accept": "json"
+          }
+        }
+      ]
+    }
+  ],
+  "decl_idents": {
+    "Value": 0,
+    "Service": 1
+  }
+}

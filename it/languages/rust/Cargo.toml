@@ -1,0 +1,7 @@
+[package]
+name = "reproto-it"
+version = "1.0.0"
+authors = ["John-John Tedro <udoprog@tedro.se>"]
+edition = "2021"
+
+[dependencies]

@@ -1,0 +1,10 @@
+paths = ["proto"]
+language = "rust"
+
+[presets.rust]
+
+[packages]
+github = "*"
+
+[modules.reqwest]
+[modules.chrono]

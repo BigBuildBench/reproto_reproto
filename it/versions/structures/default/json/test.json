@@ -1,0 +1,46 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Entry"
+        ]
+      },
+      "ident": "Entry",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": false,
+          "ident": "thing",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "prefix": "foo",
+              "package": {
+                "package": "foo",
+                "version": "4.0.0"
+              },
+              "path": [
+                "Thing"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    }
+  ],
+  "decl_idents": {
+    "Entry": 0
+  }
+}

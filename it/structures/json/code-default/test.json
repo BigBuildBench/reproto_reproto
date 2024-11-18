@@ -1,0 +1,338 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Entry"
+        ]
+      },
+      "ident": "Entry",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [],
+      "codes": []
+    },
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Type"
+        ]
+      },
+      "ident": "Type",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [],
+      "codes": [
+        {
+          "context": {
+            "type": "rust"
+          },
+          "lines": [
+            "pub fn type_method(&self) {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "java",
+            "imports": [
+              "java.util.List",
+              "java.util.ArrayList",
+              "java.util.Map"
+            ]
+          },
+          "lines": [
+            "public List<Map<String, String>> typeMethod() {",
+            "  return new ArrayList<>();",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "js"
+          },
+          "lines": [
+            "typeMethod() {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "python"
+          },
+          "lines": [
+            "def type_method(self):",
+            "  pass"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "interface",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Interface"
+        ]
+      },
+      "ident": "Interface",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [],
+      "codes": [
+        {
+          "context": {
+            "type": "rust"
+          },
+          "lines": [
+            "pub fn interface_method(&self) {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "java",
+            "imports": []
+          },
+          "lines": [
+            "public void interfaceMethod();"
+          ]
+        },
+        {
+          "context": {
+            "type": "js"
+          },
+          "lines": [
+            "interfaceMethod() {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "python"
+          },
+          "lines": [
+            "def interface_method(self):",
+            "  pass"
+          ]
+        }
+      ],
+      "sub_types": [
+        {
+          "name": {
+            "package": {
+              "package": "test"
+            },
+            "path": [
+              "Interface",
+              "SubType"
+            ]
+          },
+          "ident": "SubType",
+          "comment": [],
+          "decls": [],
+          "decl_idents": {},
+          "fields": [],
+          "codes": [
+            {
+              "context": {
+                "type": "rust"
+              },
+              "lines": [
+                "pub fn subtype_method(&self) {",
+                "}"
+              ]
+            },
+            {
+              "context": {
+                "type": "java",
+                "imports": []
+              },
+              "lines": [
+                "@Override",
+                "public void interfaceMethod() {",
+                "}"
+              ]
+            },
+            {
+              "context": {
+                "type": "js"
+              },
+              "lines": [
+                "subtypeMethod() {",
+                "}"
+              ]
+            },
+            {
+              "context": {
+                "type": "python"
+              },
+              "lines": [
+                "def subtype_method(self):",
+                "  pass"
+              ]
+            }
+          ]
+        }
+      ],
+      "sub_type_strategy": {
+        "type": "tagged",
+        "tag": "type"
+      }
+    },
+    {
+      "type": "enum",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Enum"
+        ]
+      },
+      "ident": "Enum",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "enum_type": {
+        "type": "string"
+      },
+      "variants": {
+        "type": "string",
+        "variants": [
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "Enum",
+                "Variant"
+              ]
+            },
+            "ident": "Variant",
+            "comment": [],
+            "value": "Variant"
+          }
+        ]
+      },
+      "codes": [
+        {
+          "context": {
+            "type": "rust"
+          },
+          "lines": [
+            "pub fn enum_method(&self) {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "java",
+            "imports": []
+          },
+          "lines": [
+            "public void enumMethod() {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "js"
+          },
+          "lines": [
+            "enumMethod() {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "python"
+          },
+          "lines": [
+            "def enum_method(self):",
+            "  pass"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "tuple",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Tuple"
+        ]
+      },
+      "ident": "Tuple",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [],
+      "codes": [
+        {
+          "context": {
+            "type": "rust"
+          },
+          "lines": [
+            "pub fn tuple_method(&self) {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "java",
+            "imports": []
+          },
+          "lines": [
+            "public void tupleMethod() {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "js"
+          },
+          "lines": [
+            "tupleMethod() {",
+            "}"
+          ]
+        },
+        {
+          "context": {
+            "type": "python"
+          },
+          "lines": [
+            "def tuple_method(self):",
+            "  pass"
+          ]
+        }
+      ]
+    }
+  ],
+  "decl_idents": {
+    "Entry": 0,
+    "Type": 1,
+    "Interface": 2,
+    "Enum": 3,
+    "Tuple": 4
+  }
+}

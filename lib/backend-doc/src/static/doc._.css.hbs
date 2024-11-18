@@ -1,0 +1,167 @@
+/* vim: ft=css
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: {{background_color}};
+  font-family: {{font_family}};
+  font-size: {{font_size}};
+}
+
+table {
+    border-spacing: 0 5px;
+    border-collapse: separate
+}
+
+a {
+    text-decoration: none;
+    color: none;
+}
+
+section {
+    margin: 10px;
+}
+
+.container {
+    max-width: 1020px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+h1 {
+    margin: 10px 0;
+}
+
+h2 {
+    margin: 10px 0;
+}
+
+h3 {
+    margin: 5px 0;
+}
+
+h4 {
+    margin: 5px 0;
+}
+
+h5 {
+    margin: 5px 0;
+}
+
+h6 {
+    margin: 5px 0;
+}
+*/
+
+.section-title {
+    padding-bottom: 5px;
+    border-bottom: 1px dashed {{doc_border_color}};
+}
+
+nav.top {
+    font-size: 18px;
+    margin: 10px;
+}
+
+.field {
+}
+
+/* All entries in the key should have no margin between them.
+ * Accomplish this using a flexbox */
+.field-key {
+    display: inline-flex;
+}
+
+.name-package {
+    color: {{name_package_color}};
+}
+
+.name-part {
+    color: {{name_part_color}};
+}
+
+/* separator in a name */
+.name-sep {
+    color: {{name_part_color}};
+}
+
+/* the last, most significant part of a name */
+.name-local {
+    color: {{name_local_color}};
+}
+
+/* a primitive type */
+.type-primitive {
+    color: {{primitive_color}};
+}
+
+.kind {
+    color: {{keyword_color}};
+}
+
+.keyword {
+    color: {{keyword_color}};
+}
+
+.doc {
+}
+
+.missing-doc {
+    font-style: italic;
+}
+
+.doc h1, .doc h2, .doc h3, .doc h4, .doc h5, .doc h6 {
+    color: {{doc_header_color}};
+    border-bottom: 1px solid {{doc_border_color}};
+}
+
+.doc h1 {
+    font-size: {{doc_h1_size}};
+}
+
+.doc h2 {
+    font-size: {{doc_h2_size}};
+}
+
+.doc h3 {
+    font-size: {{doc_h3_size}};
+}
+
+.doc h4 {
+    font-size: {{doc_h4_size}};
+}
+
+.doc h5 {
+    font-size: {{doc_h4_size}};
+}
+
+.doc h6 {
+    font-size: {{doc_h4_size}};
+}
+
+.doc p {
+    margin: 10px 0;
+}
+
+.package-item {
+    white-space: nowrap;
+}
+
+.package-item-doc {
+    padding-left: 20px;
+}
+
+/* smaller margin for package items since it looks better in a list. */
+.package-item-doc > .doc p {
+    margin: 5px 0;
+}
+
+.code pre {
+    padding: 16px;
+    font-size: {{monospace_font_family}};
+    font-size: {{monospace_font_size}};
+}

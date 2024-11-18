@@ -1,0 +1,371 @@
+// vim: ft=rust
+use reproto_core::{RpNumber, Spanned, Span};
+use ast::*;
+use lexer::{self, Token, Keyword};
+use super::utils;
+use std::borrow::Cow;
+
+grammar<'input>;
+
+pub File: File<'input> =
+    <comment:"//!"?>
+    <attributes:Spanned<FileAttribute>*>
+    <uses:Spanned<Use>*>
+    <decls:Decl*> => {
+        File {
+            comment: comment.unwrap_or_else(Vec::new),
+            attributes: attributes,
+            uses: uses,
+            decls: decls,
+        }
+};
+
+Use: UseDecl<'input> = {
+    "use" <package:Spanned<Package>>
+        <range:Spanned<"string">?>
+        <alias:UseAlias?>
+    <endl:(@L ";" @R)?> => UseDecl {
+        package: package,
+        range: range,
+        alias: alias,
+        endl: endl.map(|(s, _, e)| Span::from((s, e))),
+    },
+};
+
+UseAlias: Spanned<Cow<'input, str>> = "as" <value:Spanned<ident>> => value;
+
+Package: Package<'input> = {
+    <parts:OneOrMore<".", Spanned<Ident>>> => Package::Package { parts },
+    ! => Package::Error,
+};
+
+Decl: Decl<'input> = {
+    <en:Item<EnumBody>> => Decl::Enum(en),
+    <interface:Item<InterfaceBody>> => Decl::Interface(interface),
+    <ty:Item<TypeBody>> => Decl::Type(ty),
+    <tuple:Item<TupleBody>> => Decl::Tuple(tuple),
+    <service:Item<ServiceBody>> => Decl::Service(service),
+};
+
+EnumBody: EnumBody<'input> =
+    "enum" <name:Spanned<TypeIdent>> "as" <ty:Spanned<Type>> "{"
+        <variants:Item<EnumVariant>*>
+        <members:EnumMember*>
+    "}" =>
+    EnumBody {
+        name: name,
+        ty: ty,
+        variants: variants,
+        members: members,
+    };
+
+EnumMember: EnumMember<'input> = {
+    <code:Spanned<Code>> => EnumMember::Code(code),
+};
+
+InterfaceBody: InterfaceBody<'input> =
+    "interface" <name:Spanned<TypeIdent>> "{"
+      <members:TypeMember*>
+      <sub_types:Item<SubType>*>
+    "}" =>
+    InterfaceBody {
+        name: name,
+        members: members,
+        sub_types: sub_types,
+    };
+
+TypeBody: TypeBody<'input> =
+    "type" <name:Spanned<TypeIdent>> "{"
+        <members:TypeMember*>
+    "}" =>
+    TypeBody {
+        name: name,
+        members: members,
+    };
+
+TupleBody: TupleBody<'input> =
+    "tuple" <name:Spanned<TypeIdent>> "{"
+        <members:TypeMember*>
+    "}" =>
+    TupleBody {
+        name: name,
+        members: members,
+    };
+
+ServiceBody: ServiceBody<'input> =
+    "service" <name:Spanned<TypeIdent>> "{"
+        <members:ServiceMember*>
+    "}" =>
+    ServiceBody {
+        name: name,
+        members: members,
+    };
+
+pub ServiceMember: ServiceMember<'input> = {
+    <endpoint:Item<Endpoint>> => {
+        ServiceMember::Endpoint(endpoint)
+    },
+
+    <decl:Decl> => {
+        ServiceMember::InnerDecl(decl)
+    },
+};
+
+Endpoint: Endpoint<'input> = {
+    <id:Spanned<Ident>> "("
+        <arguments:ZeroOrMore<",", EndpointArgument>>
+    ")" <response:("->" Spanned<Channel>)?>
+    <alias:FieldAlias?>
+    ";" => {
+        Endpoint {
+            id: id,
+            alias: alias,
+            arguments: arguments,
+            response: response.map(|r| r.1),
+        }
+    },
+};
+
+EndpointArgument: EndpointArgument<'input> =
+    <ident:Spanned<Ident>> ":" <channel:Spanned<Channel>> => EndpointArgument {
+        ident: ident,
+        channel: channel,
+    };
+
+Channel: Channel<'input> = {
+    <stream:stream?> <ty:Spanned<Type>> => {
+        if stream.is_some() {
+            Channel::Streaming {
+                ty: ty
+            }
+        } else {
+            Channel::Unary {
+                ty: ty
+            }
+        }
+    },
+};
+
+Ident: Cow<'input, str> = {
+    <value:ident> => value,
+};
+
+FieldAlias: String = {
+    "as" <value:Ident> => value.to_string(),
+    "as" <value:"string"> => value,
+};
+
+EnumVariant: EnumVariant<'input> =
+    <name:Spanned<TypeIdent>> <argument:("as" Spanned<Value>)?> ";" =>
+    EnumVariant {
+        name: name,
+        argument: argument.map(|a| a.1),
+    };
+
+Optional: bool = <modifier:"?"?> => modifier.map(|_| true).unwrap_or(false);
+
+pub TypeMember: TypeMember<'input> = {
+    <field:Item<Field>> => TypeMember::Field(field),
+    <code:Spanned<Code>> => TypeMember::Code(code),
+    <decl:Decl> => TypeMember::InnerDecl(decl),
+};
+
+Code: Code<'input> =
+    <attributes:Spanned<Attribute>*>
+    <context:Spanned<Ident>> "{{" <content:code> "}}" =>
+    Code {
+        attributes: attributes,
+        context: context,
+        content: utils::strip_code_block(content),
+    };
+
+Field: Field<'input> = {
+    <name:Ident> <optional:Optional> ":" <ty:Spanned<Type>> <alias:FieldAlias?> <endl:";"?> =>
+    Field {
+        required: !optional,
+        name: name,
+        ty: ty,
+        field_as: alias,
+        endl: endl.is_some(),
+    },
+};
+
+SubType: SubType<'input> = {
+    <name:Spanned<TypeIdent>> <alias:("as" Spanned<Value>)?> "{"
+        <members:TypeMember*>
+    "}" =>
+    SubType {
+        name: name,
+        members: members,
+        alias: alias.map(|alias| alias.1),
+    },
+
+    <name:Spanned<TypeIdent>> <alias:("as" Spanned<Value>)?> ";" =>
+    SubType {
+        name: name,
+        members: Vec::new(),
+        alias: alias.map(|alias| alias.1),
+    },
+};
+
+pub Value: Value<'input> = {
+    "(" <values:ZeroOrMore<",", Spanned<Value>>> ")" => Value::Array(values),
+    <string:"string"> => Value::String(string),
+    <number:number> => Value::Number(number),
+    <id:Ident> => Value::Identifier(id),
+    <name:Spanned<Name>> => Value::Name(name),
+};
+
+pub Type: Type<'input> = {
+    any => Type::Any,
+    float => Type::Float,
+    double => Type::Double,
+    i32 => Type::Signed { size: 32 },
+    i64 => Type::Signed { size: 64 },
+    u32 => Type::Unsigned { size: 32 },
+    u64 => Type::Unsigned { size: 64 },
+    boolean => Type::Boolean,
+    string => Type::String,
+    datetime => Type::DateTime,
+    bytes => Type::Bytes,
+    <name:Spanned<Name>> => Type::Name {
+        name
+    },
+    "[" <inner:Spanned<Type>> "]" => Type::Array {
+        inner: Box::new(inner)
+    },
+    "{" <key:Spanned<Type>> ":" <value:Spanned<Type>> "}" => Type::Map {
+        key: Box::new(key),
+        value: Box::new(value)
+    },
+    <e:!> => Type::Error,
+};
+
+Name: Name<'input> = {
+    <prefix:(Spanned<ident> "::")?> <path:OneOrMore<"::", Spanned<TypeIdent>>> => Name::Absolute {
+        prefix: prefix.map(|p| p.0),
+        path,
+    },
+
+    "::" <path:OneOrMore<"::", Spanned<TypeIdent>>> => Name::Relative {
+        path,
+    },
+};
+
+FileAttribute: Attribute<'input> = {
+    "#" "!" "[" <id:Spanned<Ident>>  "]" => {
+        Attribute::Word(id)
+    },
+
+    "#" "!" "[" <id:Spanned<Ident>> "(" <name_value:ZeroOrMoreTrailing<",", AttributeItem>> ")" "]" => {
+        Attribute::List(id, name_value)
+    },
+};
+
+Attribute: Attribute<'input> = {
+    "#" "[" <id:Spanned<Ident>>  "]" => {
+        Attribute::Word(id)
+    },
+
+    "#" "[" <id:Spanned<Ident>> "(" <name_value:ZeroOrMoreTrailing<",", AttributeItem>> ")" "]" => {
+        Attribute::List(id, name_value)
+    },
+};
+
+AttributeItem: AttributeItem<'input> = {
+    <id:Spanned<Ident>> "=" <value:Spanned<Value>> => AttributeItem::NameValue {
+        name: id,
+        value: value,
+    },
+
+    <value:Spanned<Value>> => {
+        AttributeItem::Word(value)
+    },
+};
+
+/// Zero or more matching, separated by a token.
+ZeroOrMore<Sep, T>: Vec<T> =
+    <value:OneOrMore<Sep, T>?> =>
+    value.unwrap_or_else(|| vec![]);
+
+/// One or more matching, separated by a token.
+OneOrMore<Sep, T>: Vec<T> =
+     <values:(<T> Sep)*> <last:T> => {
+        let mut values = values;
+        values.push(last);
+        values
+    };
+
+ZeroOrMoreTrailing<Sep, T>: Vec<T> = {
+     <values:(<T> Sep)*> <last:T> Sep? => {
+        let mut values = values;
+        values.push(last);
+        values
+    },
+    () => vec![],
+};
+
+Spanned<Inner>: Spanned<Inner> = <s:@L> <inner:Inner> <e:@R> =>
+    Spanned::new(inner, (s, e));
+
+Item<T>: Item<'input, T> =
+    <comment:"///"?>
+    <attributes:Spanned<Attribute>*>
+    <s:@L> <item:T> <e:@R> =>
+    Item {
+        comment: comment.unwrap_or_else(Vec::new),
+        attributes: attributes,
+        item: Spanned::new(item, (s, e))
+    };
+
+extern {
+    type Location = usize;
+    type Error = lexer::Error;
+
+    enum Token<'input> {
+        TypeIdent => Token::TypeIdentifier(<Cow<'input, str>>),
+        ident => Token::Identifier(<Cow<'input, str>>),
+        number => Token::Number(<RpNumber>),
+        "use" => Token::Keyword(Keyword::Use),
+        "as" => Token::Keyword(Keyword::As),
+        "enum" => Token::Keyword(Keyword::Enum),
+        "type" => Token::Keyword(Keyword::Type),
+        "interface" => Token::Keyword(Keyword::Interface),
+        "tuple" => Token::Keyword(Keyword::Tuple),
+        "service" => Token::Keyword(Keyword::Service),
+        "(" => Token::LeftParen,
+        ")" => Token::RightParen,
+        "{" => Token::LeftCurly,
+        "}" => Token::RightCurly,
+        "{{" => Token::CodeOpen,
+        "}}" => Token::CodeClose,
+        code => Token::CodeContent(<Cow<'input, str>>),
+        "string" => Token::QuotedString(<String>),
+        "[" => Token::LeftBracket,
+        "]" => Token::RightBracket,
+        ";" => Token::SemiColon,
+        ":" => Token::Colon,
+        "?" => Token::QuestionMark,
+        "#" => Token::Hash,
+        "!" => Token::Bang,
+        "->" => Token::RightArrow,
+        "," => Token::Comma,
+        "." => Token::Dot,
+        "::" => Token::Scope,
+        "=" => Token::Equal,
+        "//!" => Token::PackageDocComment(<Vec<Cow<'input, str>>>),
+        "///" => Token::DocComment(<Vec<Cow<'input, str>>>),
+        any => Token::Keyword(Keyword::Any),
+        float => Token::Keyword(Keyword::Float),
+        double => Token::Keyword(Keyword::Double),
+        u32 => Token::Keyword(Keyword::U32),
+        u64 => Token::Keyword(Keyword::U64),
+        i32 => Token::Keyword(Keyword::I32),
+        i64 => Token::Keyword(Keyword::I64),
+        boolean => Token::Keyword(Keyword::Boolean),
+        string => Token::Keyword(Keyword::String),
+        datetime => Token::Keyword(Keyword::Datetime),
+        bytes => Token::Keyword(Keyword::Bytes),
+        stream => Token::Keyword(Keyword::Stream),
+    }
+}

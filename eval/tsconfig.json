@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    // "outDir": "./dist/",
+    // "sourceMap": true,
+    // "noImplicitAny": true,
+    // "module": "commonjs",
+    "baseUrl": ".",
+    "module": "esNext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es2015"
+    ],
+    "paths": {
+      "*": [
+        "./local_modules/*"
+      ]
+    }
+  },
+}

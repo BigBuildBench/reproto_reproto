@@ -1,0 +1,37 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "bar",
+          "version": "1.0.0"
+        },
+        "path": [
+          "Other"
+        ]
+      },
+      "ident": "Other",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": true,
+          "ident": "name",
+          "comment": [],
+          "type": {
+            "type": "string"
+          }
+        }
+      ],
+      "codes": []
+    }
+  ],
+  "decl_idents": {
+    "Other": 0
+  }
+}

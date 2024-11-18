@@ -1,0 +1,9 @@
+type Thing {
+  name?: string;
+
+  other?: bar::Other;
+
+  other2?: bar2::Other;
+
+  other21?: bar21::Other;
+}

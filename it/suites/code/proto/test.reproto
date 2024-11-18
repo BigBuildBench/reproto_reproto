@@ -1,0 +1,116 @@
+type Entry {
+}
+
+type Type {
+  rust {{
+  pub fn type_method(&self) {
+  }
+  }}
+
+  #[import("java.util.List", "java.util.ArrayList", "java.util.Map")]
+  java {{
+  public List<Map<String, String>> typeMethod() {
+    return new ArrayList<>();
+  }
+  }}
+
+  js {{
+  typeMethod() {
+  }
+  }}
+
+  python {{
+  def type_method(self):
+    pass
+  }}
+}
+
+interface Interface {
+  rust {{
+  pub fn interface_method(&self) {
+  }
+  }}
+
+  java {{
+  public void interfaceMethod();
+  }}
+
+  js {{
+  interfaceMethod() {
+  }
+  }}
+
+  python {{
+  def interface_method(self):
+    pass
+  }}
+
+  SubType {
+    rust {{
+    pub fn subtype_method(&self) {
+    }
+    }}
+
+    java {{
+    @Override
+    public void interfaceMethod() {
+    }
+    }}
+
+    js {{
+    subtypeMethod() {
+    }
+    }}
+
+    python {{
+    def subtype_method(self):
+      pass
+    }}
+  }
+}
+
+enum Enum as string {
+  Variant;
+
+  rust {{
+  pub fn enum_method(&self) {
+  }
+  }}
+
+  java {{
+  public void enumMethod() {
+  }
+  }}
+
+  js {{
+  enumMethod() {
+  }
+  }}
+
+  python {{
+  def enum_method(self):
+    pass
+  }}
+}
+
+tuple Tuple {
+  rust {{
+  pub fn tuple_method(&self) {
+  }
+  }}
+
+  java {{
+  public void tupleMethod() {
+  }
+  }}
+
+  js {{
+  tupleMethod() {
+  }
+  }}
+
+  python {{
+  def tuple_method(self):
+    pass
+  }}
+}

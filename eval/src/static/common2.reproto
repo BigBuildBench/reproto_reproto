@@ -1,0 +1,23 @@
+//! # Version 2.0.0 of an example package containing common types
+//!
+//! This can be imported into other specifications through:
+//!
+//! ```reproto
+//! use common "^2" as c;
+//!
+//! // ...
+//!
+//! type Foo {
+//!   field: c::Message;
+//! }
+//! ```
+
+type Message {
+  /// The content of the message!
+  content: string;
+
+  /// The size of the message.
+  ///
+  /// Note: this was added in 2.0.0
+  size: u64;
+}

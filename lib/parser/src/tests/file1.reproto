@@ -1,0 +1,88 @@
+//! Package-level documentation.
+
+use foo.bar "^2";
+use foo.bar "^2" as bar;
+use foo.bar as bar;
+
+#[attribute]
+tuple Tuple {
+  #[attribute]
+  a: double;
+  b: double;
+}
+
+#[attribute]
+#[reserved(foo)]
+type Foo {
+  #[attribute]
+  boolean_type?: boolean;
+  string_type?: string;
+  datetime_type?: datetime;
+  unsigned_32?: u32;
+  unsigned_64?: u32;
+  signed_32?: i32;
+  signed_64?: i64;
+  float_type?: float;
+  double_type?: double;
+  bytes_type?: bytes;
+  any_type?: any;
+  array_type?: [Foo];
+  map_type?: {string: Foo};
+
+  java {{
+    public int hello() {
+      return 42;
+    }
+  }}
+}
+
+#[attribute]
+#[reserved(a)]
+interface Bar {
+  java {{
+    default int hello() {
+      return 42;
+    }
+  }}
+
+  #[attribute]
+  A as "foo" {
+      name: string;
+  }
+}
+
+#[attribute]
+enum Baz as string {
+  #[attribute]
+  First as "first";
+  Second as "second";
+  Third as "third";
+}
+
+service Foo {
+  /// UNKNOWN
+  unknown();
+
+  /// UNKNOWN
+  unknown_return() -> Foo;
+
+  /// UNKNOWN
+  unknown_argument(request: Foo);
+
+  /// UNARY
+  unary(request: Foo) -> Foo;
+
+  /// SERVER_STREMAING
+  server_streaming(request: Foo) -> stream Foo;
+
+  /// CLIENT_STREAMING
+  client_streaming(request: stream Foo) -> Foo;
+
+  /// BIDI_STREAMING
+  #[http(method = "GET")]
+  #[http(query_params = (foo, bar, baz), path = "/hello/{world}")]
+  #[http]
+  #[allow(nothing)]
+  #[deny(everything)]
+  bidi_streaming(request: stream Foo) -> stream Foo;
+}

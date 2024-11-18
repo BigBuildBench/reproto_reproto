@@ -1,0 +1,561 @@
+{
+  "comment": [],
+  "version": "0.0.0",
+  "features": {},
+  "decls": [
+    {
+      "type": "type",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "Entry"
+        ]
+      },
+      "ident": "Entry",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "fields": [
+        {
+          "required": false,
+          "ident": "explicit",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumExplicit"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "implicit",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumImplicit"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "enum_u32",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumU32"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "enum_u64",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumU64"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "enum_i32",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI32"
+              ]
+            }
+          }
+        },
+        {
+          "required": false,
+          "ident": "enum_i64",
+          "comment": [],
+          "type": {
+            "type": "name",
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI64"
+              ]
+            }
+          }
+        }
+      ],
+      "codes": []
+    },
+    {
+      "type": "enum",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "EnumExplicit"
+        ]
+      },
+      "ident": "EnumExplicit",
+      "comment": [
+        "Explicitly assigned strings"
+      ],
+      "decls": [],
+      "decl_idents": {},
+      "enum_type": {
+        "type": "string"
+      },
+      "variants": {
+        "type": "string",
+        "variants": [
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumExplicit",
+                "A"
+              ]
+            },
+            "ident": "A",
+            "comment": [],
+            "value": "foo"
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumExplicit",
+                "B"
+              ]
+            },
+            "ident": "B",
+            "comment": [],
+            "value": "bar"
+          }
+        ]
+      },
+      "codes": []
+    },
+    {
+      "type": "enum",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "EnumImplicit"
+        ]
+      },
+      "ident": "EnumImplicit",
+      "comment": [
+        "Implicit naming depending on the variant"
+      ],
+      "decls": [],
+      "decl_idents": {},
+      "enum_type": {
+        "type": "string"
+      },
+      "variants": {
+        "type": "string",
+        "variants": [
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumImplicit",
+                "A"
+              ]
+            },
+            "ident": "A",
+            "comment": [],
+            "value": "A"
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumImplicit",
+                "B"
+              ]
+            },
+            "ident": "B",
+            "comment": [],
+            "value": "B"
+          }
+        ]
+      },
+      "codes": []
+    },
+    {
+      "type": "enum",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "EnumLongNames"
+        ]
+      },
+      "ident": "EnumLongNames",
+      "comment": [
+        "Variants with long names."
+      ],
+      "decls": [],
+      "decl_idents": {},
+      "enum_type": {
+        "type": "string"
+      },
+      "variants": {
+        "type": "string",
+        "variants": [
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumLongNames",
+                "FooBar"
+              ]
+            },
+            "ident": "FooBar",
+            "comment": [],
+            "value": "FooBar"
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumLongNames",
+                "Baz"
+              ]
+            },
+            "ident": "Baz",
+            "comment": [],
+            "value": "Baz"
+          }
+        ]
+      },
+      "codes": []
+    },
+    {
+      "type": "enum",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "EnumU32"
+        ]
+      },
+      "ident": "EnumU32",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "enum_type": {
+        "type": "number",
+        "kind": "u32"
+      },
+      "variants": {
+        "type": "number",
+        "variants": [
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumU32",
+                "Min"
+              ]
+            },
+            "ident": "Min",
+            "comment": [],
+            "value": 0.0
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumU32",
+                "Max"
+              ]
+            },
+            "ident": "Max",
+            "comment": [],
+            "value": 2147483647.0
+          }
+        ]
+      },
+      "codes": []
+    },
+    {
+      "type": "enum",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "EnumU64"
+        ]
+      },
+      "ident": "EnumU64",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "enum_type": {
+        "type": "number",
+        "kind": "u64"
+      },
+      "variants": {
+        "type": "number",
+        "variants": [
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumU64",
+                "Min"
+              ]
+            },
+            "ident": "Min",
+            "comment": [],
+            "value": 0.0
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumU64",
+                "Max"
+              ]
+            },
+            "ident": "Max",
+            "comment": [],
+            "value": 9007199254740991.0
+          }
+        ]
+      },
+      "codes": []
+    },
+    {
+      "type": "enum",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "EnumI32"
+        ]
+      },
+      "ident": "EnumI32",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "enum_type": {
+        "type": "number",
+        "kind": "i32"
+      },
+      "variants": {
+        "type": "number",
+        "variants": [
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI32",
+                "Min"
+              ]
+            },
+            "ident": "Min",
+            "comment": [],
+            "value": -2147483648.0
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI32",
+                "NegativeOne"
+              ]
+            },
+            "ident": "NegativeOne",
+            "comment": [],
+            "value": -1.0
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI32",
+                "Zero"
+              ]
+            },
+            "ident": "Zero",
+            "comment": [],
+            "value": 0.0
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI32",
+                "Max"
+              ]
+            },
+            "ident": "Max",
+            "comment": [],
+            "value": 2147483647.0
+          }
+        ]
+      },
+      "codes": []
+    },
+    {
+      "type": "enum",
+      "name": {
+        "package": {
+          "package": "test"
+        },
+        "path": [
+          "EnumI64"
+        ]
+      },
+      "ident": "EnumI64",
+      "comment": [],
+      "decls": [],
+      "decl_idents": {},
+      "enum_type": {
+        "type": "number",
+        "kind": "i64"
+      },
+      "variants": {
+        "type": "number",
+        "variants": [
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI64",
+                "Min"
+              ]
+            },
+            "ident": "Min",
+            "comment": [],
+            "value": -9007199254740991.0
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI64",
+                "NegativeOne"
+              ]
+            },
+            "ident": "NegativeOne",
+            "comment": [],
+            "value": -1.0
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI64",
+                "Zero"
+              ]
+            },
+            "ident": "Zero",
+            "comment": [],
+            "value": 0.0
+          },
+          {
+            "name": {
+              "package": {
+                "package": "test"
+              },
+              "path": [
+                "EnumI64",
+                "Max"
+              ]
+            },
+            "ident": "Max",
+            "comment": [],
+            "value": 9007199254740991.0
+          }
+        ]
+      },
+      "codes": []
+    }
+  ],
+  "decl_idents": {
+    "Entry": 0,
+    "EnumExplicit": 1,
+    "EnumImplicit": 2,
+    "EnumLongNames": 3,
+    "EnumU32": 4,
+    "EnumU64": 5,
+    "EnumI32": 6,
+    "EnumI64": 7
+  }
+}

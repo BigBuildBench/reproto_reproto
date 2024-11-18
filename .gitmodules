@@ -1,0 +1,6 @@
+[submodule "sublime/sublimehq-packages"]
+	path = syntaxes/sublimehq-packages
+	url = https://github.com/sublimehq/Packages.git
+[submodule "themes/ayu-rstudio"]
+	path = themes/ayu-rstudio
+	url = https://github.com/davidgibsonp/ayu-rstudio.git

@@ -1,0 +1,69 @@
+type Entry {}
+
+type RootType {
+  type NestedType {}
+
+  interface NestedInterface {
+    Foo {
+      type Nested {}
+    }
+  }
+
+  enum NestedEnum as string {
+    Foo as "Foo";
+  }
+
+  tuple NestedTuple {
+    type Nested {}
+  }
+
+  service NestedService {}
+}
+
+interface RootInterface {
+  Foo {
+    type NestedType {}
+
+    interface NestedInterface {
+      NestedFoo {
+        type Nested {}
+      }
+    }
+
+    enum NestedEnum as string {
+      Foo as "Foo";
+    }
+
+    tuple NestedTuple {
+      type Nested {}
+    }
+
+    service NestedService {}
+  }
+}
+
+enum RootEnum as string {
+  Foo as "Foo";
+}
+
+tuple RootTuple {
+  type NestedType {}
+
+  interface NestedInterface {
+    Foo {
+      type Nested {}
+    }
+  }
+
+  enum NestedEnum as string {
+    Foo as "Foo";
+  }
+
+  tuple NestedTuple {
+    type Nested {}
+  }
+
+  service NestedService {}
+}
+
+service RootService {}
